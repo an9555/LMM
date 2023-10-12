@@ -1,0 +1,32 @@
+function tipBar(type,msg){
+    
+    $("#msg").fadeIn(100);
+
+    
+    $("#msg").text(msg)
+    switch (type) {
+        case 'msgSuccess':
+            $("#msg").css("box-shadow","#20a53a 0px 0px 8px");
+            $("#msg").css("color","#20a53a")
+            $("#msg").css("background-color","#ecfce6")
+            setTimeout(function() {
+                $("#msg").fadeOut(200);
+            }, 1000);
+            break;
+        case 'msgWarn':
+            $("#msg").css("box-shadow","#e2951e 0px 0px 8px");
+            $("#msg").css("color","#e2951e")
+            $("#msg").css("background-color","#fcfae6")
+            setTimeout(function() {
+                $("#msg").fadeOut(200);
+            }, 600);
+            break;
+        
+        default:
+            $("#msg").css("box-shadow","#20a53a 0px 0px 8px");
+            $("#msg").css("color","#20a53a")
+            $("#msg").css("background-color","#ecfce6")
+    }
+    
+    
+}

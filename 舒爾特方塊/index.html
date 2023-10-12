@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)https://schultegrid.com/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线舒尔特方格 - 在线注意力训练 - 在线舒尔特方格</title>
+    <meta name="keywords" content="舒尔特方格,舒尔特方格训练,舒尔特方格注意力联系,SchulteGrid,SchulteGrid Online,在线舒尔特方格,注意力训练,舒尔特训练,SchulteTable Online,SchulteTable,schulte">
+    <meta name="description" content="在线免费舒尔特方格训练，SchulteGrid.com是免费的在线舒尔特方格网站，在线提升注意力，在线注意力训练。">
+    <script src="./index_files/hm.js.下載"></script><script language="JavaScript">
+        function mobile_device_detect(url) {
+            var thisOS = navigator.platform;
+            var os = new Array("iPhone", "iPod", "iPad", "android", "Nokia", "SymbianOS", "Symbian", "Windows Phone", "Phone", "Linux armv71", "MAUI", "UNTRUSTED/1.0", "Windows CE", "BlackBerry", "IEMobile");
+            for (var i = 0; i < os.length; i++) {
+                if (thisOS.match(os[i])) {
+                    window.location = url;
+                }
+         
+            }
+          
+            if (navigator.platform.indexOf('iPad') != -1) {
+                window.location = url;
+            }
+           
+            var check = navigator.appVersion;
+            if (check.match(/linux/i)) {
+               
+                if (check.match(/mobile/i) || check.match(/X11/i)) {
+                    window.location = url;
+                }
+            }
+         
+            Array.prototype.in_array = function(e) {
+                for (i = 0; i < this.length; i++) {
+                    if (this[i] == e)
+                        return true;
+                }
+                return false;
+            }
+        }
+        mobile_device_detect("/m");
+    </script>
+        
+    <link rel="shortcut icon" href="https://schultegrid.com/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="./index_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./index_files/fontawesome.min.css">
+    <link rel="stylesheet" href="./index_files/main.e30a92.css">
+    <link rel="stylesheet" href="./index_files/base.aa8e90o.css">
+    
+    
+    <script src="./index_files/jquery.min.js.下載"></script><script>/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+
+;// CONCATENATED MODULE: ../core/dist/flash-identifiers.js
+const FLASH_MIMETYPE = "application/x-shockwave-flash";
+const FUTURESPLASH_MIMETYPE = "application/futuresplash";
+const FLASH7_AND_8_MIMETYPE = "application/x-shockwave-flash2-preview";
+const FLASH_MOVIE_MIMETYPE = "application/vnd.adobe.flash.movie";
+const FLASH_ACTIVEX_CLASSID = "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000";
+
+;// CONCATENATED MODULE: ../core/dist/plugin-polyfill.js
+
+/**
+ * Replacement object for `MimeTypeArray` that lets us install new fake mime
+ * types.
+ *
+ * Unlike plugins we can at least enumerate mime types in Firefox, so we don't
+ * lose data.
+ *
+ * We also expose a method called `install` which adds a new plugin. This is
+ * used to falsify Flash detection. If the existing `navigator.mimeTypes` has an
+ * `install` method, you should not use `RuffleMimeTypeArray` as some other
+ * plugin emulator is already present.
+ */
+class RuffleMimeTypeArray {
+    constructor(mimeTypes) {
+        this.__mimeTypes = [];
+        this.__namedMimeTypes = {};
+        if (mimeTypes) {
+            for (let i = 0; i < mimeTypes.length; i++) {
+                this.install(mimeTypes[i]);
+            }
+        }
+    }
+    /**
+     * Install a MIME Type into the array.
+     *
+     * @param mimeType The mime type to install
+     */
+    install(mimeType) {
+        const index = this.__mimeTypes.length;
+        this.__mimeTypes.push(mimeType);
+        this.__namedMimeTypes[mimeType.type] = mimeType;
+        this[mimeType.type] = mimeType;
+        this[index] = mimeType;
+    }
+    item(index) {
+        // This behavior is done to emulate a 32-bit uint,
+        // which browsers use.
+        return this.__mimeTypes[index >>> 0];
+    }
+    namedItem(name) {
+        return this.__namedMimeTypes[name];
+    }
+    get length() {
+        return this.__mimeTypes.length;
+    }
+    [Symbol.iterator]() {
+        return this.__mimeTypes[Symbol.iterator]();
+    }
+}
+/**
+ * Equivalent object to `Plugin` that allows us to falsify plugins.
+ */
+class RufflePlugin extends RuffleMimeTypeArray {
+    constructor(name, description, filename) {
+        super();
+        this.name = name;
+        this.description = description;
+        this.filename = filename;
+    }
+}
+/**
+ * Replacement object for `PluginArray` that lets us install new fake plugins.
+ *
+ * This object needs to wrap the native plugin array, since the user might have
+ * actual plugins installed. Firefox doesn't let us enumerate the array, though,
+ * which has some consequences. Namely, we can't actually perfectly wrap the
+ * native plugin array, at least unless there's some secret "unresolved object
+ * property name handler" that I've never known before in JS...
+ *
+ * We can still wrap `namedItem` perfectly at least.
+ *
+ * We also expose a method called `install` which adds a new plugin. This is
+ * used to falsify Flash detection. If the existing `navigator.plugins` has an
+ * `install` method, you should not use `RufflePluginArray` as some other plugin
+ * emulator is already present.
+ */
+class RufflePluginArray {
+    constructor(plugins) {
+        this.__plugins = [];
+        this.__namedPlugins = {};
+        for (let i = 0; i < plugins.length; i++) {
+            this.install(plugins[i]);
+        }
+    }
+    install(plugin) {
+        const index = this.__plugins.length;
+        this.__plugins.push(plugin);
+        this.__namedPlugins[plugin.name] = plugin;
+        this[plugin.name] = plugin;
+        this[index] = plugin;
+    }
+    item(index) {
+        // This behavior is done to emulate a 32-bit uint,
+        // which browsers use. Cloudflare's anti-bot
+        // checks rely on this.
+        return this.__plugins[index >>> 0];
+    }
+    namedItem(name) {
+        return this.__namedPlugins[name];
+    }
+    refresh() {
+        // Nothing to do, we just need to define the method.
+    }
+    [Symbol.iterator]() {
+        return this.__plugins[Symbol.iterator]();
+    }
+    get length() {
+        return this.__plugins.length;
+    }
+}
+/**
+ * A fake plugin designed to trigger Flash detection scripts.
+ */
+const FLASH_PLUGIN = new RufflePlugin("Shockwave Flash", "Shockwave Flash 32.0 r0", "ruffle.js");
+/**
+ * A fake plugin designed to allow early detection of if the Ruffle extension is in use.
+ */
+const RUFFLE_EXTENSION = new RufflePlugin("Ruffle Extension", "Ruffle Extension", "ruffle.js");
+FLASH_PLUGIN.install({
+    type: FUTURESPLASH_MIMETYPE,
+    description: "Shockwave Flash",
+    suffixes: "spl",
+    enabledPlugin: FLASH_PLUGIN,
+});
+FLASH_PLUGIN.install({
+    type: FLASH_MIMETYPE,
+    description: "Shockwave Flash",
+    suffixes: "swf",
+    enabledPlugin: FLASH_PLUGIN,
+});
+FLASH_PLUGIN.install({
+    type: FLASH7_AND_8_MIMETYPE,
+    description: "Shockwave Flash",
+    suffixes: "swf",
+    enabledPlugin: FLASH_PLUGIN,
+});
+FLASH_PLUGIN.install({
+    type: FLASH_MOVIE_MIMETYPE,
+    description: "Shockwave Flash",
+    suffixes: "swf",
+    enabledPlugin: FLASH_PLUGIN,
+});
+/**
+ * Install a fake plugin such that detectors will see it in `navigator.plugins`.
+ *
+ * This function takes care to check if the existing implementation of
+ * `navigator.plugins` already accepts fake plugin entries. If so, it will use
+ * that version of the plugin array. This allows the plugin polyfill to compose
+ * across multiple plugin emulators with the first emulator's polyfill winning.
+ *
+ * @param plugin The plugin to install
+ */
+function installPlugin(plugin) {
+    if (!("install" in navigator.plugins) || !navigator.plugins["install"]) {
+        Object.defineProperty(navigator, "plugins", {
+            value: new RufflePluginArray(navigator.plugins),
+            writable: false,
+        });
+    }
+    const plugins = navigator.plugins;
+    plugins.install(plugin);
+    if (plugin.length > 0 &&
+        (!("install" in navigator.mimeTypes) || !navigator.mimeTypes["install"])) {
+        Object.defineProperty(navigator, "mimeTypes", {
+            value: new RuffleMimeTypeArray(navigator.mimeTypes),
+            writable: false,
+        });
+    }
+    const mimeTypes = navigator.mimeTypes;
+    for (let i = 0; i < plugin.length; i += 1) {
+        mimeTypes.install(plugin[i]);
+    }
+}
+
+;// CONCATENATED MODULE: ./src/plugin-polyfill.ts
+// This file is compiled and then injected into content.ts's compiled form.
+
+installPlugin(FLASH_PLUGIN);
+installPlugin(RUFFLE_EXTENSION);
+
+/******/ })()
+;</script><script src="chrome-extension://donbcfbmhbcapadipfkeojnmajbakjdc/dist/ruffle.js?id=14859462199"></script>
+    <script src="./index_files/bootstrap.min.js.下載"></script>
+    <script src="./index_files/base.js.下載"></script>
+    <script src="./index_files/timeFormat.a384wa45s.js.下載"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?2d13d80a3633a492103c84bf08669a4e";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        
+        console.log("恶意侵犯计算机系统（开挂，恶意写入成绩等）属于刑法犯罪，你的一切恶意操作都将被我们记录。")
+    </script>
+
+<link rel="stylesheet" href="./index_files/stylesheet"></head>
+<body style="">
+    
+    <nav>
+        <div class="nav-left">
+            <a href="https://schultegrid.com/" title="Schulte Grid - 在线舒尔特方格 注意力训练">
+                <img src="./index_files/65dtb.png" alt="Schulte Grid" height="38px">
+            </a>
+            <a href="https://schultegrid.com/">首页</a>
+        </div>
+        <div class="nav-right">
+            <a class="enlarge" onclick="enlargePage()">放大页面</a>
+            <a class="narrow" onclick="narrowPage()">缩小页面</a>
+        </div>
+        <style>
+            .enlarge:hover, .narrow:hover{
+                cursor: pointer;
+            }
+        </style>
+    </nav>
+    
+    <!--<a class="zfb">-->
+    <!--    <img src="https://riyugo.cn/i/2209/28/2uqv.jpg" width="">-->
+    <!--</a>-->
+    <!--<a class="zfb2">-->
+    <!--    <img src="https://riyugo.cn/i/2209/28/2uqv.jpg" width="">-->
+    <!--</a>-->
+        <style>
+            .zfb{
+                display: block;
+                position: fixed;
+                user-select: none;
+                -webkit-user-drag:none;
+                top:200px;
+                width: 200px;
+                height: 100px;
+                border-radius: 8px;
+                right: 10px;
+                box-shadow: rgba(0,0,0,.18) 0px 0px 16px;
+                overflow: hidden;
+            }
+            .zfb2{
+                display: block;
+                position: fixed;
+                user-select: none;
+                -webkit-user-drag:none;
+                top:310px;
+                width: 200px;
+                height: 100px;
+                border-radius: 8px;
+                right: 10px;
+                box-shadow: rgba(0,0,0,.18) 0px 0px 16px;
+                overflow: hidden;
+            }
+            .zfb img, .zfb2 img{
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        
+        
+    <script type="text/javascript">
+    //网页放大缩小的变量，初始值为1
+    var paramNumber = 1;
+    //缩小页面
+    function narrowPage(){
+    	//设置最小限制
+        if(paramNumber >0.8){
+            paramNumber -=0.1;
+        }
+        //缩小body
+        document.getElementsByTagName('body')[0].style.zoom=paramNumber;
+    }
+    //放大页面
+    function enlargePage(){
+    	//设置最大限制
+        if(paramNumber <1.5){
+            paramNumber +=0.1;
+        }
+        //放大body
+        document.getElementsByTagName('body')[0].style.zoom=paramNumber;
+    }
+</script>
+    <style>
+        nav{
+            display: flex;
+            height: 68px ;
+            width: 100%;
+            line-height: 68px;
+            display: -webkit-flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            font-size: 16px;
+            box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+        }
+        nav a img{
+            user-select: none;
+            margin-top: -6px;
+            opacity: .9;
+        }
+        nav a {
+            margin: 0 20px;
+            color: #777;
+        }
+        nav a:hover{
+            text-decoration: none;
+            color: #20a53a;
+        }
+    </style>    
+
+    <div class="index-wrapper">
+        <div class="index-lefter">
+            
+        </div>
+        <div class="index-main-box">
+            <div class="index-main-toper">
+                <div class="index-introduce-img">
+                    <img src="./index_files/5zjp8.png">
+                </div>
+                <div class="index-introduce-desc">
+                    <h2>舒尔特方格介绍</h2>
+                    <p class="index-introduce-desc-content">
+                        舒尔特方格是美国神经心理医生舒尔特发明的一种用于训练注意力的游戏，训练历史已有数十年，效果非常显著。
+                    </p>
+                    <p class="index-introduce-desc-content">
+                        舒尔特方格是由n*n个数字格子组成的正方形表格，练习者应当从1开始依次点击页面上所有的方格，点击完毕即为胜利。
+                    </p>
+                    
+                    <h2>成绩判定</h2>
+                    <p class="index-introduce-desc-content">
+                        以完成时间作为判断标准，完成时间越短，成绩越好。
+                    </p>
+                    <p class="index-introduce-desc-content">
+                        每局游戏结束后都将给出完成游戏所用的时间，并且可以提交成绩至排行榜。
+                    </p>
+                    
+                </div>
+            </div> 
+            <div class="index-main-body">
+                <div class="index-level-wrapper">
+                    <div class="index-level-label">
+                        高亮模式 - 升序 [入门级]
+                    </div>
+                    <div class="index-level-body">
+                        <a class="index-level" href="https://schultegrid.com/highlight/3v3.php" target="_blank">3 × 3</a>
+                        <a class="index-level" href="https://schultegrid.com/highlight/4v4.php" target="_blank">4 × 4</a>
+                        <a class="index-level" href="https://schultegrid.com/highlight/5v5.php" target="_blank">5 × 5</a>
+                        <a class="index-level" href="https://schultegrid.com/highlight/6v6.php" target="_blank">6 × 6</a>
+                        <a class="index-level" href="https://schultegrid.com/highlight/7v7.php" target="_blank">7 × 7</a>
+                    </div>
+                </div>
+                
+                <div class="index-level-wrapper">
+                    <div class="index-level-label">
+                        标准模式 - 升序 [普通级]
+                    </div>
+                    <div class="index-level-body">
+                        <a class="index-level" href="https://schultegrid.com/normal/3v3.php" target="_blank">3 × 3</a>
+                        <a class="index-level" href="https://schultegrid.com/normal/4v4.php" target="_blank">4 × 4</a>
+                        <a class="index-level" href="https://schultegrid.com/normal/5v5.php" target="_blank">5 × 5</a>
+                        <a class="index-level" href="https://schultegrid.com/normal/6v6.php" target="_blank">6 × 6</a>
+                        <a class="index-level" href="https://schultegrid.com/normal/7v7.php" target="_blank">7 × 7</a>
+                    </div>
+                </div>
+                
+                <div class="index-level-wrapper">
+                    <div class="index-level-label">
+                        捕捉模式 - 升序 [专家级]
+                    </div>
+                    <div class="index-level-body">
+                        <a class="index-level" href="https://schultegrid.com/catch/3v3.php" target="_blank">3 × 3</a>
+                        <a class="index-level" href="https://schultegrid.com/catch/4v4.php" target="_blank">4 × 4</a>
+                        <a class="index-level" href="https://schultegrid.com/catch/5v5.php" target="_blank">5 × 5</a>
+                        <a class="index-level" href="https://schultegrid.com/catch/6v6.php" target="_blank">6 × 6</a>
+                        <a class="index-level" href="https://schultegrid.com/catch/7v7.php" target="_blank">7 × 7</a>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        <div class="index-righter">
+            
+        </div>
+        
+        
+        
+    </div>
+
+    
+
+<style>
+    .index-wrapper{
+        display: flex;
+        align-items: flex-start;
+        width: 80%;
+        margin: 60px auto 60px;
+    }
+    .index-lefter, .index-righter{
+        width: 20%;
+    }
+    .index-main-box{
+        width: 60%;
+        min-height: 600px;
+    }
+    .index-main-toper{
+        display: flex;
+        align-items: flex-start;
+    }
+    .index-introduce-img{
+        width: 35%;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        text-align: center;
+    }
+    .index-introduce-img img{
+        user-select: none;
+        -webkit-user-drag:none;
+        width: 90%;
+    }
+    .index-introduce-desc{
+        width: 65%;
+        padding: 0 5%;
+    }
+    .index-introduce-desc h2{
+        color: #67c23a;
+        margin-top: 10px;
+        font-size: 24px;
+    }
+    .index-introduce-desc-content{
+        font-size: 16px;
+        color: #777;
+    }
+    .index-level-wrapper{
+        border: 1px solid #67c23a;
+        border-radius: 6px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .index-level-label{
+        color: #20a53a;
+        background-color: #effceb;
+        height: 34px;
+        font-size: 16px;
+        line-height: 34px;
+        padding: 0 16px;
+        
+        border-radius: 6px;
+    }
+    .index-level-body{
+        padding:10px 0;
+        text-align: center;
+    }
+    .index-level{
+        background-color: #effceb;
+        color: #20a53a;
+        height: 48px;
+        line-height: 48px;
+        width: 140px;
+        display: inline-block;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 16px;
+        margin: 10px 10px;
+        
+    }
+    .index-level:hover{
+        text-decoration: none;
+        color: #20a53a;
+        background-color: #e5f7e0;
+    }
+    .index-level:focus{
+        text-decoration: none;
+        color: #20a53a;
+        background-color: #effceb;
+    }
+</style>
+
+
+
+    
+    
+    
+    
+<footer class="row" id="footer">
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 footer-left">
+                <a href="https://schultegrid.com/">
+                <img id="footer-logo" src="./index_files/65dtb.png" alt="薄荷图床logo" title="薄荷图床-最好用的图片外链平台">
+                </a>
+                <ul class="footer-left-ul list-unstyled">
+                    <li class="ft-bind-tips">在线舒尔特方格，注意力训练</li>
+                    <li style="color:#777">简单在线训练注意力</li>
+                </ul>
+                
+            </div>
+            
+            <div class="col-lg-2 col-md-2 ft-items">
+                <div class="ft-items-title">高亮模式</div> 
+                <ul class="list-unstyled">
+                    <li><a href="https://schultegrid.com/highlight/3v3.php" target="_blank">3格 × 3格</a></li>
+                    <li><a href="https://schultegrid.com/highlight/4v4.php" target="_blank">4格 × 4格</a></li>
+                    <li><a href="https://schultegrid.com/highlight/5v5.php" target="_blank">5格 × 5格</a></li>
+                    <li><a href="https://schultegrid.com/highlight/6v6.php" target="_blank">6格 × 6格</a></li>
+                    <li><a href="https://schultegrid.com/highlight/7v7.php" target="_blank">7格 × 7格</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-2 col-md-2 ft-items">
+                <div class="ft-items-title">标准模式</div>
+                <ul class="list-unstyled">
+                    <li><a href="https://schultegrid.com/normal/3v3.php" target="_blank">3格 × 3格</a></li>
+                    <li><a href="https://schultegrid.com/normal/4v4.php" target="_blank">4格 × 4格</a></li>
+                    <li><a href="https://schultegrid.com/normal/5v5.php" target="_blank">5格 × 5格</a></li>
+                    <li><a href="https://schultegrid.com/normal/6v6.php" target="_blank">6格 × 6格</a></li>
+                    <li><a href="https://schultegrid.com/normal/7v7.php" target="_blank">7格 × 7格</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-2 col-md-2 ft-items">
+                <div class="ft-items-title">捕捉模式</div>
+                <ul class="list-unstyled">
+                    <li><a href="https://schultegrid.com/catch/3v3.php" target="_blank">3格 × 3格</a></li>
+                    <li><a href="https://schultegrid.com/catch/4v4.php" target="_blank">4格 × 4格</a></li>
+                    <li><a href="https://schultegrid.com/catch/5v5.php" target="_blank">5格 × 5格</a></li>
+                    <li><a href="https://schultegrid.com/catch/6v6.php" target="_blank">6格 × 6格</a></li>
+                    <li><a href="https://schultegrid.com/catch/7v7.php" target="_blank">7格 × 7格</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-2 col-md-2 ft-items">
+                <div class="ft-items-title">云服务赞助商</div>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://riyugo.com/" target="_blank">
+                            <img src="./index_files/n38o.jpg" style="width:100%;margin-left:-20px;user-select:none;margin-top:16px">
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+
+            
+            
+        </div> 
+    </div> 
+    
+    
+    <div class="row" id="footer-copyright">
+        
+        <style>
+   
+            
+            #friendlinks{
+                margin: 16px 0;
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                line-height: 40px;
+                text-align: center;
+            }
+            .friendlinks-item{
+                padding: 0 10px;
+                color: #777;
+            }
+            .friendlinks-item:hover{
+                color: #20a53a;
+                text-decoration: none;
+            }
+
+        </style>
+        <div class="col-lg-10 col-md-10 col-lg-push-1 col-md-push-1" id="friendlinks">
+                <span class="friendlinks-title  ">友情链接： </span>
+                <a href="https://riyugo.com/" target="_blank" class="friendlinks-item">薄荷图床</a>|
+                <a href="https://boheurl.com/" target="_blank" class="friendlinks-item">薄荷短网址</a>|
+                <a href="https://proexif.com/" target="_blank" class="friendlinks-item">查看图片Exif</a>
+            </div>
+            
+            
+            
+
+    </div>
+</footer>
+
+
+<style>
+    #footer{
+        border-top: 1px solid #ddd;  
+        padding-top: 40px;
+    }
+    .ft-items-title{
+        font-size: 16px;
+        margin: 6px 0;
+    }
+    .ft-items a {
+        text-decoration: none;
+        line-height: 24px;
+        color: #777;
+        font-size: 12px;
+    }
+    .ft-items a:hover{
+        color: #20a53a;
+    }
+    #footer-logo{
+        width: 60%;
+        user-select: none;
+        -webkit-user-drag:none
+    }
+    .ft-bind-tips{
+        font-size: 12px;
+        color: #777;
+        margin: 0px 0px 16px;
+    }
+    /*.ft-items {*/
+    /*    text-align: center;*/
+    /*}*/
+</style>
+
+
+
+    
+</body></html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Dual N-Back</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<audio id="sound1">
+<source src="http://www.freesound.org/data/previews/67/67721_7037-lq.mp3" type="audio/mp3">
+</audio>
+<audio id="sound2">
+<source src="http://www.freesound.org/data/previews/67/67728_7037-lq.mp3" type="audio/mp3">
+</audio>
+<audio id="sound3">
+<source src="http://www.freesound.org/data/previews/67/67736_7037-lq.mp3" type="audio/mp3">
+</audio>
+<audio id="sound4">
+<source src="http://www.freesound.org/data/previews/67/67719_7037-lq.mp3" type="audio/mp3">
+</audio>
+<audio id="sound5">
+<source src="http://www.freesound.org/data/previews/67/67716_7037-lq.mp3" type="audio/mp3">
+</audio>
+<audio id="sound6">
+<source src="http://www.freesound.org/data/previews/67/67717_7037-lq.mp3" type="audio/mp3">
+</audio>
+<audio id="sound7">
+<source src="http://www.freesound.org/data/previews/67/67735_7037-lq.mp3" type="audio/mp3">
+</audio>
+<audio id="sound8">
+<source src="http://www.freesound.org/data/previews/67/67720_7037-lq.mp3" type="audio/mp3">
+</audio>
+<div style=" background-color:#F9F5E7; float:left; border-radius:25px;margin-left: 30%;">
+  <h1 id="head" class="headline textcolor"></h1>
+  <p id="score" class="outerleft textcolor">Score: 100.00%</p>
+<h1 id="ping" class="headline ping">&#10004;</h1>
+  <div class="outerleft outerright outerbottom outertop" style="height:400px; width:400px; border-radius: 10px;border: 10px solid #E5BEEC;background-color:#E5BEEC;">
+    <div id="b1" class="button color1 outerbcolor left"></div>
+    <div id="b2" class="button color1 outerbcolor middle"></div>
+    <div id="b3" class="button color1 outerbcolor right"></div>
+    <div id="b4" class="button color1 outerbcolor left row2"></div>
+    <div id="center" class="center innerbcolor middle row2"><p id="begin" class="headline textcolor outertop" style="cursor: pointer;">click to begin</p></div>
+    <div id="b5" class="button color1 outerbcolor right row2"></div>
+    <div id="b6" class="button color1 outerbcolor left"></div>
+    <div id="b7" class="button color1 outerbcolor middle"></div>
+    <div id="b8" class="button color1 outerbcolor right"></div>
+
+  </div>
+<p id="leftarrow" style="float:left;" class="outerleft outerbottom textcolor">Left arrow: position match</p>
+<p id="rightarrow" style="float:right;" class="outerright outerbottom textcolor">Right arrow: sound match</p>
+</div>
+<!-- partial -->
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

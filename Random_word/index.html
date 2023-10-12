@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Words Table</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap" rel="stylesheet">
+	<style>
+	table {
+  font-family: 'Noto Sans SC', sans-serif;
+  color:#454545;
+  border-collapse: collapse;
+  width: 80%;
+  margin-left: 10%;
+}
+
+td, th {
+  border: 1px solid #e8d0d0;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #e8d0d0;
+}
+
+h1{text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+	</style>
+</head>
+<body>
+  <h1>記憶隨機詞語</h1>
+  <a href="/Random_num/index.html">next</a>
+	<table id="word-table"></table>
+  <button onclick="window.print()">Print this page</button>
+<script>
+    // 從 word.csv 中讀取單詞
+fetch('word.csv')
+  .then(response => response.text())
+  .then(data => {
+    const words = data.split('\n').map(word => word.trim()).filter(word => word !== '');
+
+    // 創建一個包含 1-100 數字的數組
+    const numbers = Array.from(Array(200), (_, index) => index + 1);//修改總數
+
+    // 從單詞數組中隨機挑選 100 個單詞
+    const randomWords = [];
+    while (randomWords.length < 200) {//修改總數
+      const index = Math.floor(Math.random() * words.length);
+      const word = words[index];
+      if (!randomWords.includes(word)) {
+        randomWords.push(word);
+      }
+    }
+
+    // 將單詞分組，每 10 個單詞一組
+    const wordGroups = [];
+    for (let i = 0; i < randomWords.length; i += 10) {//行*10
+      wordGroups.push(randomWords.slice(i, i + 10));
+    }
+
+    // 將單詞表格添加到頁面中
+    const table = document.getElementById('word-table');
+    for (let i = 0; i <20 ; i++) {//欄*20
+      const row = table.insertRow();
+      for (let j = 0; j < 10; j++) {//列*10
+        const cell = row.insertCell();
+        const number = numbers[i * 10 + j];
+        const word = wordGroups[i][j] || '';
+        cell.textContent = `${number}-${word}`;
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

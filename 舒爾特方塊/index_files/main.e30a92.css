@@ -1,0 +1,192 @@
+/*LEFT BAR*/
+.left-bar{
+    
+}
+.left-bar-inner{
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+.left-bar-title{
+    text-align: center;
+    font-size: 16px;
+    color: #67c23a;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px dashed #ddd;
+}
+.left-bar-body{
+    font-size: 14px;
+    color: #777;
+    padding: 10px 16px;
+}
+.rule{
+    font-weight: bold;
+    font-size: 16px;
+}
+.rule-stars{
+    color: gold;
+    padding-left: 1em;
+}
+.rule-desc{
+    text-indent: 1em;
+}
+/*LEFT BAR*/
+
+
+
+.main-wrapper{
+    display: flex;
+    align-items: flex-start;
+    width: 80%;
+    margin: 0 auto 60px;
+}
+.left-bar, .right-bar{
+    width: 20%;
+}
+
+.rand{
+    width: 100%;
+}
+.rand-head{
+    height: 100px;
+    border: 1px solid #ddd;
+    background-image: url("https://riyugo.cn/i/2204/18/b7.png");
+    background-repeat: no-repeat;
+    background-size: auto 80%;
+    background-position-x: 90%;
+    background-position-y: 50%;
+    padding: 12px 12px;
+    background-color: #f7fff4;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom: 1px dashed #ddd;
+    font-family: microsoft yahei;
+}
+.rand-head-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 4px 10%;
+    color: #20a53a;
+}
+.rand-head-desc{
+    margin: 4px 10%;
+    color: #777;
+}
+.rand-body{
+    padding: 10px 0;
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.rand-item{
+    padding: 0 10px;
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px dashed #ddd;
+    display: flex;
+}
+.rand-no{
+    width: 15%;
+    font-size: 16px;
+    text-align: center;
+    user-select: none;
+}
+.rand-name{
+    width: 35%;
+    text-align: center;
+    overflow: hidden;
+    font-size: 14px;
+}
+.rand-time{
+    width: 49%;
+    text-align: center;
+    overflow: hidden;
+    font-size: 14px;
+}
+.main-box{
+    width: 60%;
+    min-height: 600px;
+}
+
+#startGame{
+    display: inline-block;
+    background: #53a8ff;
+    border: 1px solid #53a8ff;
+    border-radius: 4px;
+    padding: 10px 26px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 0;
+    cursor: pointer;
+    margin: 10px 6px;
+    user-select: none;
+}
+#startGame[disabled]{
+    opacity: .6;
+    cursor: not-allowed;
+}
+#reStart{
+    display: inline-block;
+    background: #67c23a;
+    border: 1px solid #67c23a;
+    border-radius: 4px;
+    padding: 10px 26px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 0;
+    cursor: pointer;
+    margin: 10px 6px;
+    user-select: none;
+}
+#submitScore{
+    display: none;
+    background: #67c23a;
+    border: 1px solid #67c23a;
+    border-radius: 4px;
+    padding: 10px 26px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 0;
+    cursor: pointer;
+    margin: 10px 6px;
+    user-select: none;
+}
+.durtime{
+    text-align: center;
+    font-size: 16px;
+    height: 36px;
+    font-family: microsoft yahei;
+    line-height: 36px;
+    background-color: #ecfce6;
+    width: 14em;
+    border-radius: 6px;
+    margin: 10px auto 30px;
+    color: #20a53a;
+    font-weight: bold;
+    user-select: none;
+    
+}
+
+#durMinute, #durSecond, #durMilisecond{
+    width: 2em;
+    text-align: center;
+    display: inline-block;
+}
+
+
+.nickName{
+    height: 35px;
+    padding-left: 15px;
+    border-radius: 7px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.control-area{
+    margin: 0 auto;
+    text-align: center;
+}

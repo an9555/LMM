@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Number Table</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Noto+Sans+SC:wght@300&display=swap" rel="stylesheet">
+	<style>
+	table {
+  font-family: 'Bruno Ace SC', cursive;
+  color:#454545;
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: 15%;
+}
+
+td, th {
+  border: 1px solid #e8d0d0;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #e8d0d0;
+}
+
+h1{text-align: center;
+    font-family: 'Noto Sans SC', sans-serif;
+}
+	</style>
+</head>
+<body>
+    <h1>記憶隨機數字</h1>
+    <a href="/Random_word/index.html">next</a>
+	<!-- 創建一個 ID 為 number-table 的表格 -->
+<table id="number-table"></table>
+<button onclick="window.print()">Print this page</button>
+
+<!-- 創建一個名為 generateRandomNumbers 的函數 -->
+<script>
+    function generateRandomNumbers() {
+        // 創建一個空數組 numbers
+        var numbers = [];
+
+        // 創建 0 ~ 99 的數字，將 0 ~ 9 的數字轉換為 "01" ~ "09" 格式，
+        // 然後將所有數字添加到 numbers 中
+        for (var i = 0; i < 100; i++) {
+            if (i < 10) {
+                numbers.push('0' + i);
+            } else {
+                numbers.push('' + i);
+            }
+        }
+
+        // 將 numbers 數組隨機排序
+        numbers = shuffleArray(numbers);
+
+        // 創建一個空數組 combinations
+        var combinations = [];
+
+        // 創建 0 ~ 99 的數字的所有組合，
+        // 將所有組合添加到 combinations 中
+        for (var i = 0; i < 100; i++) {
+            for (var j = 0; j < 100; j++) {
+                combinations.push(numbers[i] + numbers[j]);
+            }
+        }
+
+        // 將 combinations 數組隨機排序
+        combinations = shuffleArray(combinations);
+
+        // 返回 combinations 數組
+        return combinations;
+    }
+
+    // 創建一個名為 shuffleArray 的函數
+    function shuffleArray(array) {
+        // 將數組中的元素隨機排序
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+
+        // 返回隨機排序後的數組
+        return array;
+    }
+
+    // 獲取 ID 為 number-table 的表格
+    var table = document.getElementById('number-table');
+
+    // 創建一個包含隨機數字組合的數組
+    var combinations = generateRandomNumbers();
+
+    // 定義行號為 1
+    var rowNumber = 1;
+
+    // 創建 1000 個表格行，每行包含 10 個表格單元格
+    for (var i = 0; i < 1000; i++) {
+        // 創建一個表格行
+        var row = document.createElement('tr');
+
+        // 創建 10 個表格單元格，並將隨機數字添加到單元格中
+        for (var j = 0; j < 10; j++) {
+            var cell = document.createElement('td');
+            cell.textContent = combinations[(i * 10) + j];
+            row.appendChild(cell);
+        }
+
+        // 創建一個表格單元格，顯示行
+        var rowLabel = document.createElement('td');
+        rowLabel.textContent = "row" + ((rowNumber - 1) % 25 + 1);
+        row.appendChild(rowLabel);
+
+        // 將行添加到表格中
+        table.appendChild(row);
+
+        // 行號加 1
+        rowNumber++;
+    }
+
+	</script>
+</body>
+</html>
